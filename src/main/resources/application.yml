@@ -1,16 +1,18 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:salon_project;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: ""
+    url: jdbc:postgresql://localhost:5432/salon_db
+    username: salon_user
+    password: salon_pass
+    driver-class-name: org.postgresql.Driver
 
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
 
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+logging:
+  level:
+    root: INFO
+    org.example.salon_project: DEBUG
