@@ -1,8 +1,8 @@
 package org.example.salon_project.repository;
 
-import org.example.salon_project.model.Customers;
+import org.example.salon_project.model.ClientEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CustomerRepository extends JpaRepository<Customers, Long> {
+public interface ClientRepository extends JpaRepository<ClientEntity, Long> {
     boolean existsByEmail(String email);
 }

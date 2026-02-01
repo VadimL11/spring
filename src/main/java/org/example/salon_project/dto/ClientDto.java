@@ -3,7 +3,7 @@ package org.example.salon_project.dto;
 
 import java.time.OffsetDateTime;
 
-public record CustomerDto(
+public record ClientDto(
         Long id,
         String firstName,
         String lastName,
