@@ -21,11 +21,7 @@ public final class ClientEntityMapper {
     public static ClientEntity toEntity(Client d) {
         ClientEntity e = new ClientEntity();
         e.setId(d.getId());
-        e.setFirstName(d.getFirstName());
-        e.setLastName(d.getLastName());
-        e.setPhone(d.getPhone());
-        e.setEmail(d.getEmail());
-        e.setLanguage(d.getLanguage());
+        applyDomainToEntity(d, e);
         e.setCreatedAt(d.getCreatedAt());
         return e;
     }

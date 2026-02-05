@@ -7,6 +7,7 @@ import org.example.salon_project.dto.ClientUpdateRequest;
 import org.example.salon_project.mapper.ClientMapper;
 import org.example.salon_project.service.ClientService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class ClientController {
     }
 
     @GetMapping
-    public List<ClientDto> list(
+    public List<ClientDto> getClients(
             @RequestParam(defaultValue = "20") int limit,
             @RequestParam(defaultValue = "0") int offset
     ) {
@@ -37,9 +38,16 @@ public class ClientController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public ClientDto create(@Valid @RequestBody ClientCreateRequest request) {
-        return ClientMapper.toDto(service.create(ClientMapper.fromCreate(request)));
+    public ResponseEntity<ClientDto> create(
+            @Valid @RequestBody ClientCreateRequest request
+    ) {
+        ClientDto dto = ClientMapper.toDto(
+                service.create(ClientMapper.fromCreate(request))
+        );
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(dto);
     }
 
     @PatchMapping("/{id}")

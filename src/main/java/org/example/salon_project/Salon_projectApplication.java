@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Salon_projectApplication {
 
-    public static void main() {
+    static void main() {
         SpringApplication.run(Salon_projectApplication.class);
     }
 
